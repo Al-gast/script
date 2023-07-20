@@ -68,5 +68,47 @@ add(10, 11)
 const response = less(11, 10)
 console.log(response);
 
+//! INTERFACE
+console.log("");
+console.log("---------- INTERFACE ----------");
+console.log("");
 
+type CoreCounter = 2 | 4 | 6 | 8 | 12;
+type CoreName = "DualCore" | "QuadCore" | "OctaCore" | "SuperCore"
+type Core = CoreCounter | CoreName;
+interface IProsessor {
+  brand: string;
+  baseModel: string;
+  modelName: string;
+  coreTotal: Core;
+}
+
+interface Intel extends IProsessor {
+  turboBoost?: boolean; // null safety
+}
+interface AMD extends IProsessor {
+  precisionBoost?: boolean; // null safty
+}
+
+function createIntel (prosessor: Intel) : void {
+  console.log(
+    `Brand = ${prosessor.brand},
+     baseModel = ${prosessor.baseModel},
+     modelName = ${prosessor.modelName},
+     coreTotal = ${prosessor.coreTotal},
+     turboBoost = ${prosessor.turboBoost ? prosessor.turboBoost : ""},
+    `
+  );
+}
+
+function createAmd (prosessor: AMD) : void {
+  console.log(
+    `Brand = ${prosessor.brand},
+     baseModel = ${prosessor.baseModel},
+     modelName = ${prosessor.modelName},
+     coreTotal = ${prosessor.coreTotal},
+     turboBoost = ${prosessor.precisionBoost ? prosessor.precisionBoost : ""},
+    `
+  );
+}
 
